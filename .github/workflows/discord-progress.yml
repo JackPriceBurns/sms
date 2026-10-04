@@ -12,7 +12,7 @@ permissions:
 jobs:
   post:
     if: github.event_name == 'workflow_dispatch' || github.repository == 'doldecomp/sms'
-    container: ghcr.io/doldecomp/sms-build:main
+    container: ghcr.io/jackpriceburns/sms-build-pal:main
     runs-on: ubuntu-latest
 
     steps:
@@ -33,7 +33,7 @@ jobs:
         DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
       run: |
         uv run --no-project --with matplotlib --with requests \
-          python tools/discord_progress.py --version GMSJ01 \
+          python tools/discord_progress.py --version GMSP01 \
           --binutils /binutils --compilers /compilers
 
     - name: Upload graph
